@@ -138,7 +138,7 @@
         @endif
 
         <!-- Formulario de actualización -->
-        <form action="{{ url('/actualizar-apiCam/' . $data['id_camioneta']) }}" method="POST">
+        <form action="{{ url('actualizarCam' . $data['id_camioneta']) }}" method="POST">
             @csrf
             @method('PUT') <!-- Esto convierte el formulario en una solicitud PUT -->
             

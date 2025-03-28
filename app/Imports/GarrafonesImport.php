@@ -1,21 +1,23 @@
 <?php
-
 namespace App\Imports;
 
-use App\Models\garrafones;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Illuminate\Support\Facades\Http;
 
-class GarrafonesImport implements ToModel
+class GarrafonesImport implements ToCollection
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
-        return new garrafones([
-            //
-        ]);
+        foreach ($rows as $index => $row) {
+            if ($index == 0) continue; // Saltar la primera fila si es encabezado
+
+            Http::post('http://localhost:3000/api/registro_garrafon', [
+                
+                'estado' => $row[0],
+                'peso' => $row[1],
+                'marca' => $row[2],
+            ]);
+        }
     }
 }

@@ -183,6 +183,18 @@
         <a href="{{ url('/alta-apiGar') }}" class="btn btn-primary mb-4">
             <i class="bi bi-plus-circle"></i>  Agregar Registro
         </a>
+        <a href="{{ route('graficas.garrafones') }}" class="btn btn-primary mb-4">
+            Ver Gráficas de Garrafones
+        </a>
+        <form action="{{ route('import.garrafones') }}" method="POST" enctype="multipart/form-data" class="d-flex flex-column align-items-center gap-3">
+    @csrf
+    <input type="file" name="file" class="form-control w-50" required>
+    <button type="submit" class="btn btn-primary px-4 py-2 fw-bold shadow-lg">
+        <i class="bi bi-upload"></i> Importar Excel
+    </button>
+        <a href="{{ route('exportar.garrafones') }}" class="btn btn-success">
+    Exportar a Excel
+        </a>
         
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -199,7 +211,6 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Estado</th>
-                        <th scope="col">Peso</th>
                         <th scope="col">Peso</th>
                         <th scope="col">Marca</th>
                     </tr>

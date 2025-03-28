@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id('id_camioneta');
             $table->string('placas');
             $table->string('marca');
-            $table->string('modelo'); 
+            $table->string('modelo');
             $table->string('capacidad');
-            $table->string('id_garrafon');
-            $table->string('id_repartidor');
+            $table->unsignedBigInteger('id_repartidor'); // Columna para almacenar la relación
+            $table->foreign('id_repartidor')->references('id_repartidor')->on('tb_repartidores')->onDelete('cascade'); // Definición de la clave foránea
             $table->timestamps();
         });
+        
     }
 
     /**

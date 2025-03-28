@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\RepartidoresImport;
+use App\Exports\RepartidoresExport;
 
 
 class ControllerAPI extends Controller
@@ -171,6 +172,23 @@ class ControllerAPI extends Controller
     Excel::import(new RepartidoresImport, $request->file('file'));
 
     return redirect()->back()->with('success', 'Registros importados correctamente');
-}
+
+    }
+
+    public function exportarRepartidores()
+    {
+        return Excel::download(new RepartidoresExport, 'repartidores.xlsx');
+    }
+
+    public function mostrarGraficas()
+    {
+        // Obtener datos desde la API
+        $response = Http::get('http://localhost:3000/api/tb_repartidores');
+
+        // Si la solicitud fue exitosa, pasar datos a la vista
+        $repartidores = $response->successful() ? $response->json() : [];
+
+        return view('repartidores.graficas', compact('repartidores'));
+    }
     
 }

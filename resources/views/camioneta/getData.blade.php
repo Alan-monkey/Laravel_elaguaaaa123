@@ -183,6 +183,10 @@
         <a href="{{ url('/alta-apiCam') }}" class="btn btn-primary mb-4">
             <i class="bi bi-plus-circle"></i>  Agregar Registro
         </a>
+        <a href="{{ route('exportar.camionetas') }}" class="btn btn-success">
+    Exportar a Excel
+        </a>
+</form>
         
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -192,6 +196,7 @@
             </div>
         @endif
        
+        
         <div class="table-responsive">
 
             <table class="table table-bordered table-striped">
@@ -202,7 +207,6 @@
                         <th scope="col">Marca</th>
                         <th scope="col">Modelo</th>
                         <th scope="col">Capacidad</th>
-                        <th scope="col">ID_Garrafon</th>
                         <th scope="col">ID_Repartidor</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -216,8 +220,14 @@
         <td>{{ $camioneta['marca'] }}</td>
         <td>{{ $camioneta['modelo'] }}</td>
         <td>{{ $camioneta['capacidad'] }}</td>
-        <td>{{ $camioneta['id_garrafon'] }}</td>
-        <td>{{ $camioneta['id_repartidor'] }}</td>
+
+        <td>
+            @if(isset($camioneta['repartidor']['username']))
+            {{ $camioneta['repartidor']['username'] }}
+            @else
+                <span class="text-muted">No disponible</span>
+            @endif
+        </td>
 
 
                             <td>

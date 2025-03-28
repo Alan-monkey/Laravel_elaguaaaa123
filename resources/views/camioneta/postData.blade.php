@@ -197,18 +197,15 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="id_garrafon" class="form-label">
-                            <i class="bi bi-calendar"></i> Garrafon
-                        </label>
-                        <input type="text" class="form-control" name="id_garrafon" id="id_garrafon" value="{{ old('id_garrafon') }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_repartidor" class="form-label">
-                            <i class="bi bi-calendar"></i> Repartidor
-                        </label>
-                        <input type="text" class="form-control" name="id_repartidor" id="id_repartidor" value="{{ old('id_repartidor') }}" required>
-                    </div>
-
+                    <label for="id_repartidor" class="form-label">
+                        <i class="bi bi-building"></i> Repartidor
+                    </label>
+                    <select class="form-select" id="id_repartidor" name="id_repartidor" required>
+                        @foreach ($repartidores as $repartidor)
+                            <option value="{{ $repartidor['id_repartidor'] }}">{{ $repartidor['username'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">
                             <i class="bi bi-save"></i> Registrar

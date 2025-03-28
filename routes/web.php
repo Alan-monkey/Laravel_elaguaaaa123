@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\VendedorController;
 
@@ -40,7 +40,9 @@ Route::get('/', [ControllerAPI::class, 'welcome'])->name('/welcome');
 
 
 Route::post('/import-repartidores', [ControllerAPI::class, 'importRepartidores'])->name('import.repartidores');
+Route::get('/exportar-repartidores', [ControllerAPI::class, 'exportarRepartidores'])->name('exportar.repartidores');
 
+Route::get('/graficas-repartidores', [ControllerAPI::class, 'mostrarGraficas'])->name('graficas.repartidores');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,6 +61,7 @@ Route::get('/borrar-apiCam/{id}', [ControllerCamioneta::class, 'deleteDataCam'])
 
 Route::get('/editar-apiCam', [ControllerCamioneta::class, 'showEditCam'])->name('/editar-apiCam');
 Route::get('/', [ControllerCamioneta::class, 'welcome'])->name('/welcome');
+Route::get('/exportar-camionetas', [ControllerCamioneta::class, 'exportarCamionetas'])->name('exportar.camionetas');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ///Garrafones
@@ -75,6 +78,9 @@ Route::get('/editar-apiGar/{id}', [ControllerGarrafon::class, 'showEditGar']);
 Route::put('/actualizar-apiGar/{id}', [ControllerGarrafon::class, 'actualizarGar'])->name('actualizar.apiGar');
 Route::get('/borrar-apiGar/{id}', [ControllerGarrafon::class, 'deleteDataGar']);
 Route::get('/', [ControllerGarrafon::class, 'welcome'])->name('/welcome');
+Route::get('/exportar-garrafones', [ControllerGarrafon::class, 'exportarGarrafones'])->name('exportar.garrafones');
+Route::post('/import-garrafones', [ControllerGarrafon::class, 'importGarrafones'])->name('import.garrafones');
+Route::get('/graficas-garrafones', [ControllerGarrafon::class, 'mostrarGraficas'])->name('graficas.garrafones');
 
 
 
@@ -94,6 +100,7 @@ Route::get('/borrar-apiAdm/{id}', [ControllerAdmin::class, 'deleteDataAdm']);
 Route::get('/', [ControllerAdmin::class, 'welcome'])->name('/welcome');
 
 Route::post('/import-admin', [ControllerAdmin::class, 'importAdmin'])->name('import.administradores');
+Route::get('/exportar-admin', [ControllerAdmin::class, 'exportarAdmin'])->name('exportar.admin');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,3 +118,20 @@ Route::put('/actualizar-apiCli/{id}', [ControllerCliente::class, 'actualizarCli'
 Route::get('/borrar-apiCli/{id}', [ControllerCliente::class, 'deleteDataCli']);
 Route::get('/', [ControllerCliente::class, 'welcome'])->name('/welcome');
 Route::post('/import-clientes', [ControllerCliente::class, 'importClientes'])->name('import.clientes');
+Route::get('/exportar-clientes', [ControllerCliente::class, 'exportarClientes'])->name('exportar.clientes');
+
+
+
+
+
+
+///LED
+
+use App\Http\Controllers\EstadoLedController;
+
+Route::post('/leds', [EstadoLedController::class, 'store']);
+Route::get('/leds', [EstadoLedController::class, 'index']);
+
+
+
+

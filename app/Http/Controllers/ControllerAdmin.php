@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AdminImport;
+use App\Exports\AdministradoresExport;
 
 class ControllerAdmin extends Controller
 {
@@ -162,6 +163,14 @@ class ControllerAdmin extends Controller
 
     return redirect()->back()->with('success', 'Registros importados correctamente');
 }
+
+
+public function exportarAdmin()
+{
+    return Excel::download(new AdministradoresExport, 'admin.xlsx');
+}
+
+
     }
 
 

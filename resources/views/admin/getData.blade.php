@@ -191,6 +191,10 @@
     <button type="submit" class="btn btn-primary px-4 py-2 fw-bold shadow-lg">
         <i class="bi bi-upload"></i> Importar Excel
     </button>
+    <a href="{{ route('exportar.admin') }}" class="btn btn-success">
+    Exportar a Excel
+        </a>
+</form>
 </form>
 
         

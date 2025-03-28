@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ClientesImport;
+use App\Exports\ClientesExport;
+
 
 class ControllerCliente extends Controller
 {
@@ -164,6 +166,12 @@ class ControllerCliente extends Controller
     return redirect()->back()->with('success', 'Registros importados correctamente');
 }
 
+
+
+public function exportarClientes()
+{
+    return Excel::download(new ClientesExport, 'clientes.xlsx');
+}
 
 
 

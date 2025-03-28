@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
        
         :root {
@@ -184,6 +185,11 @@
         <a href="{{ url('/alta-api') }}" class="btn btn-primary mb-4">
             <i class="bi bi-plus-circle"></i>  Agregar Registro
         </a>
+        <a href="{{ route('graficas.repartidores') }}" class="btn btn-primary mb-4">
+            Ver Gráficas de Repartidores
+        </a>
+
+        
 
         <form action="{{ route('import.repartidores') }}" method="POST" enctype="multipart/form-data" class="d-flex flex-column align-items-center gap-3">
     @csrf
@@ -191,6 +197,11 @@
     <button type="submit" class="btn btn-primary px-4 py-2 fw-bold shadow-lg">
         <i class="bi bi-upload"></i> Importar Excel
     </button>
+
+    <a href="{{ route('exportar.repartidores') }}" class="btn btn-success">
+    Exportar a Excel
+        </a>
+        
 </form>
 
         

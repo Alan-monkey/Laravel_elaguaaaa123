@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\GarrafonesExport;
+use App\Imports\GarrafonesImport;
 
 class ControllerGarrafon extends Controller
 {
@@ -144,9 +147,33 @@ class ControllerGarrafon extends Controller
     }
 
 
-   
+    public function exportarGarrafones()
+    {
+        return Excel::download(new GarrafonesExport, 'garrafones.xlsx');
+    }
 
+    public function importGarrafones(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls'
+        ]);
+    
+        Excel::import(new GarrafonesImport, $request->file('file'));
+    
+        return redirect()->back()->with('success', 'Registros importados correctamente');
+    
+        }
 
+        public function mostrarGraficas()
+    {
+        // Obtener datos desde la API
+        $response = Http::get('http://localhost:3000/api/tb_garrafon_agua');
+
+        // Si la solicitud fue exitosa, pasar datos a la vista
+        $garrafones = $response->successful() ? $response->json() : [];
+
+        return view('garrafones.graficas', compact('garrafones'));
+    }
 
 
     

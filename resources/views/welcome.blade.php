@@ -33,8 +33,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Estilos generales */
         .additional-info {
@@ -518,6 +517,8 @@
                 <li><a href="{{ route('/consultar-apiGar')}}">Garrafones</a></li>
                 <li><a href="{{ route('/consultar-apiCam')}}">Camionetas</a></li>
             </ul>
+            
+
         </nav>
     </header>
 
@@ -544,6 +545,7 @@
 
                 </p>
                 <button>Contáctanos</button>
+
             </div>
 
             <img src="{{ asset('storage/capibara2.jpeg') }}" alt="Evento con postres">
