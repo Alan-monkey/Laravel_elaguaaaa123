@@ -12,6 +12,12 @@
                 </div>
             @endif -->
 
+
+
+<!-- 
+            <img src="{{ asset('Backend/assets/img/capibara2.jpeg') }}" alt="Evento con postres"> -->
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,6 +40,7 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         /* Estilos generales */
         .additional-info {
@@ -479,6 +486,7 @@
             background-color: #000000;
         }
     </style>
+
 </head>
 
 <body>
@@ -490,36 +498,27 @@
         </div>
         <!-- botones de inicio y registrar  -->
         @if (Route::has('login'))
-    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-        @auth
-            <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg">Dashboard</a>
-        @else
-            <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg me-2">Log in</a>
+            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg me-2">Log in</a>
 
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="btn btn-light btn-lg">Register</a>
-            @endif
-        @endauth
-    </div>
-@endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btn btn-light btn-lg">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
 
         <!-- Hasta aqui termina -->
         <hr>
 
 
-        <nav>
 
-            <ul>
-                <li><a href="">Buscar</a></li>
-                <li><a href="{{ route('/consultar-api')}}">Repartidores</a></li>
-                <li><a href="{{ route('/consultar-apiAdm')}}">Administradores</a></li>
-                <li><a href="{{ route('/consultar-apiCli')}}">Clientes</a></li>
-                <li><a href="{{ route('/consultar-apiGar')}}">Garrafones</a></li>
-                <li><a href="{{ route('/consultar-apiCam')}}">Camionetas</a></li>
-            </ul>
-            
 
-        </nav>
+
+
     </header>
 
     <section id="inicio" class="inicio">
@@ -548,7 +547,7 @@
 
             </div>
 
-            <img src="{{ asset('storage/capibara2.jpeg') }}" alt="Evento con postres">
+            <img src="{{ asset('Backend/assets/img/capibara2.jpeg') }}" alt="Evento con postres">
         </div>
     </section>
     <!-- Sección Servicios (ya con cambios) -->
@@ -561,13 +560,13 @@
         <div class="grid">
             <div class="gallery-item">
 
-                <img src="{{ asset('storage/compu2.jpeg')}}" alt="Elia's Studios">
+                <img src="{{ asset('Backend/assets/img/compu2.jpeg')}}" alt="Elia's Studios">
             </div>
             <div class="gallery-item">
-                <img src="{{ asset('storage/garrafones.jpeg')}}" alt="UTVT">
+                <img src="{{ asset('Backend/assets/img/garrafones.jpeg')}}" alt="UTVT">
             </div>
             <div class="gallery-item">
-                <img src="{{ asset('storage/compu.jpeg')}}" alt="UTVT">
+                <img src="{{ asset('Backend/assets/img/compu.jpeg')}}" alt="UTVT">
             </div>
     </section>
     <!-- Sección Galería Dulce (modificada) -->

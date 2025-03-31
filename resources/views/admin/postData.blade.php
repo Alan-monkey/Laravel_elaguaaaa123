@@ -19,6 +19,17 @@
         body {
             background-color: #f8f9fa;
             animation: fadeIn 1s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 40px;
+            background: linear-gradient(135deg, #313235, #955aff, #ffc623, #da4c4c, #313235);
+            background-size: 125%;
+            animation: fanimado 15s infinite;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .container {

@@ -18,9 +18,60 @@ use App\Http\Controllers\Backend\VendedorController;
 |
 */
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Grupo de rutas protegidas para administradores
+// Este middleware garantiza que solo los usuarios autenticados puedan acceder a las rutas protegidas.
+//rutas de administradores 
+// Rutas protegidas para administradores con prevención de regreso en historial
+Route::middleware(['auth', 'role:admin', \App\Http\Middleware\PreventBackHistory::class])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
+
+
+// Ruta de login para administradores (evita acceso si ya está autenticado)
+Route::get('/admin/login', function () {
+    if (auth()->check()) {
+        return redirect()->route('admin.dashboard'); // Si ya está autenticado, redirige al dashboard
+    }
+    return view('auth.admin-login');
+})->name('admin.login');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+
+// rutas de vendedores 
+// Si el usuario no tiene el rol requerido, probablemente se redirigirá a una página de acceso denegado 
+// o se lanzará un error HTTP 403.
+// Rutas protegidas para vendedores
+Route::middleware(['auth', 'role:vendedor', 'prevent-back-history'])->group(function () {
+    Route::get('/vendedor/dashboard', [VendedorController::class, 'dashboard'])->name('vendedor.dashboard');
+});
+
+
+// Ruta de login para vendedores (evita acceso si ya está autenticado)
+Route::get('/vendedor/login', function () {
+    if (auth()->check()) {
+        return redirect()->route('vendedor.dashboard'); // Si ya está autenticado, redirige al dashboard
+    }
+    return view('auth.vendedor-login'); // Asegúrate de que esta vista existe
+})->name('vendedor.login');
+
+
+// ruta para el login de administradores 
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+
 
 //Ruta de la API de Repartidores
 use App\Http\Controllers\ControllerAPI;
@@ -127,11 +178,17 @@ Route::get('/exportar-clientes', [ControllerCliente::class, 'exportarClientes'])
 
 ///LED
 
-use App\Http\Controllers\EstadoLedController;
-
-Route::post('/leds', [EstadoLedController::class, 'store']);
-Route::get('/leds', [EstadoLedController::class, 'index']);
 
 
+use App\Http\Controllers\LedController;
+
+Route::get('/leds', [LedController::class, 'index'])->name('/leds');
 
 
+
+
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

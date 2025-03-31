@@ -10,7 +10,7 @@ class ControllerCamioneta extends Controller
 {
     public function getDataCam(){
         // Hacemos una solicitud GET a una API externa
-        $response = Http::get('http://localhost:3000/api/tb_camionetas/');
+        $response = Http::get('http://localhost:3000/tb_camionetas/');
 
         // Verificamos si la solicitud fue exitosa
         if ($response->successful()) {
@@ -18,7 +18,7 @@ class ControllerCamioneta extends Controller
 
             //si las carreras contengan un id_universidad, se obtiene el nombre de la universidad
             foreach ($data as &$camioneta) { // Usamos & para modificar el array original
-                $repartidoresResponse = Http::get('http://localhost:3000/api/id_repartidores/'. $camioneta['id_repartidor']);
+                $repartidoresResponse = Http::get('http://localhost:3000/id_repartidores/'. $camioneta['id_repartidor']);
                 if ($repartidoresResponse->successful()) {
                     $camioneta['repartidor'] = $repartidoresResponse->json();
                 } else {
@@ -33,13 +33,13 @@ class ControllerCamioneta extends Controller
     }
 
     public function getData2Cam($id){
-        $response = Http::get('http://localhost:3000/api/id_camioneta/' . $id);
+        $response = Http::get('http://localhost:3000/id_camioneta/' . $id);
 
         if ($response->successful()) {
             $data = $response->json();
 
             if (isset($data['id_repartidor'])) {
-                $repartidorResponse = Http::get('http://localhost:3000/api/id_repartidores/' . $data['id_repartidor']);
+                $repartidorResponse = Http::get('http://localhost:3000/id_repartidores/' . $data['id_repartidor']);
                 if ($repartidorResponse->successful()) {
                     $data['repartidor'] = $repartidorResponse->json();
                 } else {
@@ -57,7 +57,7 @@ class ControllerCamioneta extends Controller
 
     public function deleteDataCam($id)
     {
-        $response = Http::delete('http://localhost:3000/api/eli_camioneta/' . $id);
+        $response = Http::delete('http://localhost:3000/eli_camioneta/' . $id);
 
         if ($response->successful()) {
             return redirect()->route('/consultar-apiCam')->with('success', 'Camioneta eliminada correctamente');
@@ -67,11 +67,11 @@ class ControllerCamioneta extends Controller
     }
 
     public function showEditCam($id) {
-        $response = Http::get("http://localhost:3000/api/id_camioneta/$id");
+        $response = Http::get("http://localhost:3000/id_camioneta/$id");
 
         if ($response->successful()) {
             $data = $response->json();
-            $repartidoresResponse = Http::get("http://localhost:3000/api/id_repartidores/");
+            $repartidoresResponse = Http::get("http://localhost:3000/id_repartidores/");
             $repartidores = $repartidoresResponse->successful() ? $repartidoresResponse->json() : [];
 
             return view('camioneta.updateData', [
@@ -93,7 +93,7 @@ class ControllerCamioneta extends Controller
             'id_repartidor' => 'required|integer',
         ]);
 
-        $response = Http::put("http://localhost:3000/api/camionetas/$id", $request->all());
+        $response = Http::put("http://localhost:3000/camionetas/$id", $request->all());
 
         if ($response->successful()) {
             return redirect()->route('camionetas.index')->with('success', 'Registro actualizado correctamente');
@@ -112,7 +112,7 @@ class ControllerCamioneta extends Controller
             'id_repartidor' => 'required|integer',
         ]);
 
-        $response = Http::post('http://localhost:3000/api/registro_camioneta', $validated);
+        $response = Http::post('http://localhost:3000/registro_camioneta', $validated);
 
         if ($response->successful()) {
             return redirect()->route('/consultar-apiCam')->with('success', 'Camioneta creada con éxito.');
@@ -123,7 +123,7 @@ class ControllerCamioneta extends Controller
 
     public function showFormCam()
     {
-        $response = Http::get('http://localhost:3000/api/tb_repartidores');
+        $response = Http::get('http://localhost:3000/tb_repartidores');
 
         if ($response->successful()) {
             $repartidores = $response->json();
