@@ -28,49 +28,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Grupo de rutas protegidas para administradores
-// Este middleware garantiza que solo los usuarios autenticados puedan acceder a las rutas protegidas.
-//rutas de administradores 
-// Rutas protegidas para administradores con prevención de regreso en historial
-Route::middleware(['auth', 'role:admin', \App\Http\Middleware\PreventBackHistory::class])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::post('/login', function (Request $request) {
+    $response = Http::post('http://localhost:3000/login', [
+        'email' => $request->email,
+        'password' => $request->password,
+    ]);
+
+    if ($response->successful()) {
+        $data = $response->json();
+        session(['token' => $data['token'], 'usuario' => $data['usuario']]);
+        return redirect('/dashboard');
+    } else {
+        return back()->with('error', 'Credenciales incorrectas');
+    }
+});
+Route::get('/welcome_admin', function () {
+    return view('welcome_admin');
 });
 
 
-// Ruta de login para administradores (evita acceso si ya está autenticado)
-Route::get('/admin/login', function () {
-    if (auth()->check()) {
-        return redirect()->route('admin.dashboard'); // Si ya está autenticado, redirige al dashboard
-    }
-    return view('auth.admin-login');
-})->name('admin.login');
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+use Illuminate\Support\Facades\Auth;
+
+Route::post('/logout', function () {
+    Auth::logout(); // Cierra sesión
+    request()->session()->invalidate(); // Invalida la sesión
+    request()->session()->regenerateToken(); // Regenera token CSRF
+    return redirect('/login')->with('status', 'Sesión cerrada correctamente');
+})->name('logout');
 
 
-// rutas de vendedores 
-// Si el usuario no tiene el rol requerido, probablemente se redirigirá a una página de acceso denegado 
-// o se lanzará un error HTTP 403.
-// Rutas protegidas para vendedores
-Route::middleware(['auth', 'role:vendedor', 'prevent-back-history'])->group(function () {
-    Route::get('/vendedor/dashboard', [VendedorController::class, 'dashboard'])->name('vendedor.dashboard');
-});
 
-
-// Ruta de login para vendedores (evita acceso si ya está autenticado)
-Route::get('/vendedor/login', function () {
-    if (auth()->check()) {
-        return redirect()->route('vendedor.dashboard'); // Si ya está autenticado, redirige al dashboard
-    }
-    return view('auth.vendedor-login'); // Asegúrate de que esta vista existe
-})->name('vendedor.login');
-
-
-// ruta para el login de administradores 
-Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 
 //Ruta de la API de Repartidores
@@ -86,7 +79,7 @@ Route::put('/actualizar-api/{id}', [ControllerAPI::class, 'actualizar'])->name('
 Route::get('/borrar-api/{id}', [ControllerAPI::class, 'deleteData']);
 
 
-Route::get('/', [ControllerAPI::class, 'welcome'])->name('/welcome');
+Route::get('/', [ControllerAPI::class, 'welcome_admin'])->name('/welcome_admin');
 
 
 
@@ -148,7 +141,7 @@ Route::post('/alta-apiAdm', [ControllerAdmin::class, 'postDataAdm'])->name('envi
 Route::get('/editar-apiAdm/{id}', [ControllerAdmin::class, 'showEditAdm']);
 Route::put('/actualizar-apiAdm/{id}', [ControllerAdmin::class, 'actualizarAdm'])->name('actualizar.apiAdm');
 Route::get('/borrar-apiAdm/{id}', [ControllerAdmin::class, 'deleteDataAdm']);
-Route::get('/', [ControllerAdmin::class, 'welcome'])->name('/welcome');
+Route::get('/', [ControllerAdmin::class, 'welcome_admin'])->name('/welcome_admin');
 
 Route::post('/import-admin', [ControllerAdmin::class, 'importAdmin'])->name('import.administradores');
 Route::get('/exportar-admin', [ControllerAdmin::class, 'exportarAdmin'])->name('exportar.admin');
@@ -167,7 +160,7 @@ Route::post('/alta-apiCli', [ControllerCliente::class, 'postDataCli'])->name('en
 Route::get('/editar-apiCli/{id}', [ControllerCliente::class, 'showEditCli']);
 Route::put('/actualizar-apiCli/{id}', [ControllerCliente::class, 'actualizarCli'])->name('actualizar.apiCli');
 Route::get('/borrar-apiCli/{id}', [ControllerCliente::class, 'deleteDataCli']);
-Route::get('/', [ControllerCliente::class, 'welcome'])->name('/welcome');
+Route::get('/', [ControllerCliente::class, 'welcome_admin'])->name('/welcome_admin');
 Route::post('/import-clientes', [ControllerCliente::class, 'importClientes'])->name('import.clientes');
 Route::get('/exportar-clientes', [ControllerCliente::class, 'exportarClientes'])->name('exportar.clientes');
 
@@ -192,3 +185,22 @@ Route::get('/leds', [LedController::class, 'index'])->name('/leds');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+
+
+
+
+
+use App\Http\Controllers\AuthController;
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+
+
+use App\Http\Controllers\carritoController;
+
+Route::get('/carrito', [carritoController::class, 'carrito'])->name('/carrito');

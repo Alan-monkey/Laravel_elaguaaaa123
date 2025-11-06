@@ -9,7 +9,7 @@ class ClientesExport implements FromArray
     public function array(): array
     {
         // Obtener datos de la API
-        $response = Http::get('http://localhost:3000/api/tb_cliente');
+        $response = Http::get('http://localhost:3000/tb_cliente');
 
         if ($response->successful()) {
             return $response->json(); // Retorna los datos en formato array

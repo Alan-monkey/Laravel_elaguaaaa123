@@ -24,7 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repostería - Pastry Monkey</title>
+    <title>Cafeteria - Coffe store</title>
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -43,13 +43,7 @@
 
     <style>
         /* Estilos generales */
-        .additional-info {
-            background-color: #ff6eb6
-        }
-
-        .list-group-item {
-            background-color: #FFD1DC
-        }
+        
 
         body {
             font-family: Arial, sans-serif;
@@ -59,15 +53,13 @@
         }
 
         header {
-
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 40px;
-            background: linear-gradient(135deg, #313235, #955aff, #ffc623, #da4c4c, #313235);
+            padding: 10px;
+            background: linear-gradient(135deg, #000000ff);
             background-size: 125%;
             animation: fanimado 15s infinite;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -95,13 +87,13 @@
 
         header h1 {
             font-size: 3rem;
-            color: #000000;
+            color: #f7f7f7ff;
             font-style: italic;
             /* Morado pastel */
         }
 
         .header-content p {
-            color: #000000;
+            color: #ffffffff;
             /* Morado pastel */
         }
 
@@ -138,11 +130,11 @@
             /* Gris oscuro para contraste */
             padding: 10px 20px;
             border-radius: 20px;
-            background-color: #1d1a1f;
+            background-color: #000000ff;
         }
 
         nav ul li a:hover {
-            background-color: #682e93;
+            background-color: #206148ff;
             /* Morado pastel */
             color: #ffffff;
             transform: scale(1.1);
@@ -177,15 +169,7 @@
             }
         }
 
-        header {
-            background-color: #febdfd;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+
 
         section {
             padding: 50px 20px;
@@ -196,7 +180,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #000000;
+            background-color: #206148ff;
 
         }
 
@@ -258,9 +242,9 @@
 
         .services {
 
-            color: rgb(0, 0, 0);
+            color: rgba(241, 241, 241, 1);
             padding: 40px;
-            background: linear-gradient(135deg, #000000, #5dd1ff, #5dd1ff);
+            background: linear-gradient(135deg,  #8f6035ff, #8f6035ff, #8f6035ff);
             background-size: 125%;
             animation: fanimado 12s infinite;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -282,7 +266,7 @@
         }
 
         .services h2 {
-            color: #000000;
+            color: #ffffffff;
             margin-bottom: 20px;
         }
 
@@ -438,7 +422,7 @@
         .additional-info {
             padding: 40px 20px;
             padding: 40px;
-            background: linear-gradient(135deg, #000000, #5dd1ff, #5dd1ff);
+            background: linear-gradient(135deg,  #8f6035ff, #8f6035ff, #8f6035ff);
             background-size: 125%;
             animation: fanimado 12s infinite;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -487,13 +471,14 @@
         }
     </style>
 
+<link rel="stylesheet" href="../css/welcome.css">
 </head>
 
 <body>
     <header>
         <div class="header-content">
-            <h1>¡El aguaaaa!</h1>
-            <p class="slogan">"El aguaaaa by Elia's Studios"</p>
+            <h1>Coffe store</h1>
+            <p class="slogan">"Sistema de gestión de cafeteria"</p>
 
         </div>
         <!-- botones de inicio y registrar  -->
@@ -513,41 +498,28 @@
 
         <!-- Hasta aqui termina -->
         <hr>
-
-
-
-
-
-
+        
     </header>
 
     <section id="inicio" class="inicio">
         <div class="content">
             <div class="text">
-                <h1 style="color: white;">El agua, Gefa... </h1>
+                <h1 style="color: white;">CoffeSoft </h1>
 
-                <p style="color: white;">Con este proyecto IoT, se busca mejorar la gestión del inventario
-                    en tiempo real, reducir pérdidas, optimizar rutas de distribución y facilitar la toma
-                    de decisiones para un servicio más eficiente y transparente.
-                    A través de sensores estratégicamente ubicados en la camioneta, el
-                    sistema detectará el movimiento de los garrafones, identificando cuándo un garrafón lleno
-                    es retirado y cuándo un garrafón vacio es colocado en su lugar.
+                <p style="color: white;">CoffeSoft una herramienta tecnológica 
+                que permita automatizar los procesos principales de una cafetería, centralizando 
+                la información en una plataforma digital moderna, segura y fácil de usar. De esta 
+                necesidad surge CaféSoft, un sistema integral de gestión que busca optimizar la 
+                operación diaria y mejorar la experiencia tanto del cliente como del 
+                administrador.
                 </p>
                 <hr>
-                <p style="color: white;">La información recopilada
-                    será enviada en tiempo real a una aplicación móvil, permitiendo a los repartidores y
-                    administradores visualizar:
-                    La cantidad exacta de garrafones llenos y vacíos en la camioneta, el registro detallado de entradas
-                    y salidas de garrafones con el fin de cuadrar ganancias más fácilmente.
-                    La distribución de los garrafones dentro de la camioneta, identificando los espacios ocupados por
-                    garrafones llenos o vacíos.
-
-                </p>
+                
                 <button>Contáctanos</button>
 
             </div>
 
-            <img src="{{ asset('Backend/assets/img/capibara2.jpeg') }}" alt="Evento con postres">
+            <img src="{{ asset('Backend/assets/img/CoffeSoft.jpeg') }}" alt="Evento con postres">
         </div>
     </section>
     <!-- Sección Servicios (ya con cambios) -->
@@ -562,9 +534,7 @@
 
                 <img src="{{ asset('Backend/assets/img/compu2.jpeg')}}" alt="Elia's Studios">
             </div>
-            <div class="gallery-item">
-                <img src="{{ asset('Backend/assets/img/garrafones.jpeg')}}" alt="UTVT">
-            </div>
+            
             <div class="gallery-item">
                 <img src="{{ asset('Backend/assets/img/compu.jpeg')}}" alt="UTVT">
             </div>

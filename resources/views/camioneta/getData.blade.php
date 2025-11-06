@@ -195,7 +195,7 @@
 <body>
 
     <nav>
-    <img src="{{ asset('storage/capibara2.jpeg') }}" alt="Evento con postres">
+    <img src="{{ asset('Backend/assets/img/capibara2.jpeg') }}" alt="Evento con postres">
 
     <a href="{{ route('/welcome')}}" title="Inicio">Inicio</a>
         <a href="{{ route('/consultar-api')}}" title="Ver lista de repartidores">Repartidores</a>

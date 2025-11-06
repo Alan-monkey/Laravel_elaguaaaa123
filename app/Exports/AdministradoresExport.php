@@ -9,7 +9,7 @@ class AdministradoresExport implements FromArray
     public function array(): array
     {
         // Obtener datos de la API
-        $response = Http::get('http://localhost:3000/api/tb_administrador');
+        $response = Http::get('http://localhost:3000/tb_administrador');
 
         if ($response->successful()) {
             return $response->json(); // Retorna los datos en formato array

@@ -9,7 +9,7 @@ class RepartidoresExport implements FromArray
     public function array(): array
     {
         // Obtener datos de la API
-        $response = Http::get('http://localhost:3000/api/tb_repartidores');
+        $response = Http::get('http://localhost:3000/tb_repartidores');
 
         if ($response->successful()) {
             return $response->json(); // Retorna los datos en formato array

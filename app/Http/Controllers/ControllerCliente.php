@@ -27,9 +27,9 @@ class ControllerCliente extends Controller
         return view('clientes.getData', ['data' => $data]);
     }
     
-    public function welcome()
+    public function welcome_admin()
     {    
-        return view('welcome');
+        return view('welcome_admin');
     }
     public function getData2Cli($id){
         // Hacemos una solicitud GET a una API externa

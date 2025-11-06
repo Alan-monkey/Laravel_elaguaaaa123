@@ -18,7 +18,7 @@ class AdminImport implements ToCollection
         
 
         // Obtener todos los repartidores existentes
-        $response = Http::get("http://localhost:3000/api/tb_administrador");
+        $response = Http::get("http://localhost:3000/tb_administrador");
 
         if ($response->successful()) {
             $repartidores = $response->json();
@@ -34,7 +34,7 @@ class AdminImport implements ToCollection
         }
 
         // Si no existe, registrar el usuario
-        Http::post('http://localhost:3000/api/registro_administrador', [
+        Http::post('http://localhost:3000/registro_administrador', [
                 'nombre' => $row[0],
                 'telefono' => $row[1],
                 'username' => $username,

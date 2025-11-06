@@ -12,7 +12,7 @@ class GarrafonesImport implements ToCollection
         foreach ($rows as $index => $row) {
             if ($index == 0) continue; // Saltar la primera fila si es encabezado
 
-            Http::post('http://localhost:3000/api/registro_garrafon', [
+            Http::post('http://localhost:3000/registro_garrafon', [
                 
                 'estado' => $row[0],
                 'peso' => $row[1],

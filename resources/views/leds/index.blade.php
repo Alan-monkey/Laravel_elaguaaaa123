@@ -195,7 +195,7 @@
 <body>
 
 <nav>
-<img src="{{ asset('storage/capibara2.jpeg') }}" alt="Evento con postres">
+<img src="{{ asset('Backend/assets/img/capibara2.jpeg') }}" alt="Evento con postres">
 
     <a href="{{ route('/welcome')}}" title="Inicio">Inicio</a>
     <a href="{{ route('/consultar-apiAdm')}}" title="Ver lista de Administradores">Administradores</a>
@@ -225,7 +225,7 @@
                 <td>{{ $led->id }}</td>
                 <td>{{ $led->led1 ? 'Vendido' : 'SV' }}</td>
                 <td>{{ $led->led2 ? 'Vendido' : 'SV' }}</td>
-                <td>{{ $led->timestamp }}</td>
+                <td>{{ \Carbon\Carbon::parse($led->timestamp)->format('d-m-Y H:i') }}</td>
                 <td>${{ ($led->led1 + $led->led2) * 15 }}</td>
             </tr>
             @endforeach

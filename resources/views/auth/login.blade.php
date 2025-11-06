@@ -1,50 +1,128 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Purificadora de Agua</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-blue-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 class="text-2xl font-bold text-center text-blue-900">Purificadora de Agua</h2>
-        <p class="text-gray-600 text-center">Inicia sesión para continuar</p>
-        
-        <form method="POST" action="{{ route('login') }}" class="mt-6">
-            @csrf
-            
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-gray-700">Correo Electrónico</label>
-                <input id="email" type="email" name="email" class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-            </div>
-            
-            <!-- Password -->
-            <div class="mt-4">
-                <label for="password" class="block text-gray-700">Contraseña</label>
-                <input id="password" type="password" name="password" class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-            </div>
-            
-            <!-- Remember Me -->
-            <div class="flex items-center mt-4">
-                <input id="remember_me" type="checkbox" name="remember" class="mr-2">
-                <label for="remember_me" class="text-gray-600">Recuérdame</label>
-            </div>
-            
-            <!-- Botón de Login -->
-            <div class="mt-6">
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Iniciar Sesión</button>
-            </div>
-        </form>
-        
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1d1d1dff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-        <!-- esta parte del codigo todavia no la entiedno muy vien pero al ingrezar los codigos para crear el login por
-        medio de brezeers me creo el apartado de restarurar contraseña   -->
-        <!-- Enlace para recuperar contraseña
-        <div class="text-center mt-4">
-            <a href="{{ route('password.request') }}" class="text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a>
-        </div> -->
+        .container {
+            display: flex;
+            width: 800px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .left {
+            flex: 1;
+            background-image: url("{{ asset('Backend/assets/img/cafeteria.jpeg') }}");
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .left h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #0d4b35ff;
+            color: #ffffff;
+        }
+
+        .right h2 {
+            margin-bottom: 20px;
+            color: #ffffffff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 12px;
+            background: #00a86b;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #006341;
+        }
+
+        a {
+            margin-top: 10px;
+            text-decoration: none;
+            color: #27a87bff;
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Bienvenido</h1>
+            <p>Ingresa a tu cuenta</p>
+        </div>
+        <div class="right">
+            <h2>Iniciar sesión</h2>
+            @if($errors->any())
+                <p class="error">{{ $errors->first() }}</p>
+            @endif
+            <form method="POST" action="/login">
+                @csrf
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Contraseña</label>
+                <input type="password" name="password" required>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <a href="/register">¿No tienes cuenta? Regístrate</a>
+        </div>
     </div>
 </body>
 </html>

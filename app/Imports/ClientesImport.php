@@ -16,7 +16,7 @@ class ClientesImport implements ToCollection
             $correo = $row[4];    // Email como identificador único
 
             // Obtener todos los repartidores existentes
-            $response = Http::get("http://localhost:3000/api/tb_cliente");
+            $response = Http::get("http://localhost:3000/tb_cliente");
 
             if ($response->successful()) {
                 $clientes = $response->json();
@@ -32,7 +32,7 @@ class ClientesImport implements ToCollection
             }
 
             // Si no existe, registrar el usuario
-            Http::post('http://localhost:3000/api/registro_repartidores', [
+            Http::post('http://localhost:3000/registro_repartidores', [
                 'nombre' => $row[1],
                 'telefono' => $row[2],
                 'username' => $username,

@@ -1,0 +1,443 @@
+ /* Estilos generales */
+        .additional-info {
+            background-color: #ff6eb6
+        }
+
+        .list-group-item {
+            background-color: #FFD1DC
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 40px;
+            background: linear-gradient(135deg, #349972ff, #206148ff, #13382aff, #000000ff);
+            background-size: 125%;
+            animation: fanimado 15s infinite;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+        }
+
+        @keyframes fanimado {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Contenido del encabezado */
+        .header-content {
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #000000;
+            font-style: italic;
+            /* Morado pastel */
+        }
+
+        .header-content p {
+            color: #000000;
+            /* Morado pastel */
+        }
+
+        .slogan {
+            font-size: 1.2rem;
+            color: #fff;
+            font-family: 'Georgia', serif;
+            /* Elegancia clásica */
+            margin: 5px 0 20px 0;
+            font-style: italic;
+        }
+
+        /* Navegación */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            /* Separación entre elementos del menú */
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            font-family: 'Montserrat', sans-serif;
+            /* Fuente moderna y legible */
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: #fff;
+            /* Gris oscuro para contraste */
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: #1d1a1f;
+        }
+
+        nav ul li a:hover {
+            background-color: #682e93;
+            /* Morado pastel */
+            color: #ffffff;
+            transform: scale(1.1);
+            /* Efecto de agrandamiento */
+            box-shadow: 0 4px 10px rgba(104, 46, 147, 0.4);
+            /* Sombra */
+        }
+
+        /* Efectos decorativos */
+        nav ul li::before {
+            content: "💧";
+            /* Icono decorativo de pastel */
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.3);
+            /* Aparece el ícono */
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        header {
+            background-color: #febdfd;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .inicio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000000;
+
+        }
+
+        .inicio .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        @media (min-width: 768px) {
+            .inicio .content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                width: 300%;
+            }
+
+            .inicio .text {
+                flex: 1;
+                text-align: left;
+                padding-right: 20px;
+
+
+            }
+
+            .inicio img {
+                max-width: 22%;
+                height: auto;
+                border-radius: 8px;
+                margin-top: 20px;
+                transition: transform 0.3s ease;
+            }
+        }
+
+        .inicio img:hover {
+            transform: scale(1.05);
+        }
+
+        .inicio h1,
+        .inicio p {
+            margin: 20px 0;
+        }
+
+        .inicio button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .inicio button:hover {
+            background-color: #555;
+        }
+
+        .services {
+
+            color: rgba(241, 241, 241, 1);
+            padding: 40px;
+            background: linear-gradient(135deg,  #8f6035ff, #8f6035ff, #8f6035ff);
+            background-size: 125%;
+            animation: fanimado 12s infinite;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+        }
+
+        @keyframes fanimado {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .services h2 {
+            color: #ffffffff;
+            margin-bottom: 20px;
+        }
+
+        .services p {
+            margin-bottom: 40px;
+        }
+
+        .services img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .services img:hover {
+            transform: scale(1.05);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Galería Dulce */
+        .gallery-dulce {
+            padding: 50px 20px;
+            background-color: #050404;
+        }
+
+        .gallery-dulce h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .gallery-dulce p {
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .gallery-dulce img {
+            max-width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-dulce img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal personalizado */
+        .modal-img {
+            width: 100%;
+        }
+
+        /* Efectos de transición para las imágenes */
+        .gallery-dulce img,
+        .services img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            width: 100%;
+            /* Asegura tamaños uniformes */
+        }
+
+        .gallery-dulce img:hover,
+        .services img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* Servicios centrados y uniformes */
+
+
+        /* Uniformidad en Galería Dulce */
+        .gallery-dulce .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-dulce {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .gallery-dulce .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .gallery-item {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: cover;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-description {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        /* Ajustar espaciado general de imágenes */
+        .gallery-dulce .grid,
+        .services .grid {
+            padding: 0 20px;
+            /* Agregar padding interno a los contenedores de las imágenes */
+            max-width: 1200px;
+            /* Limitar el ancho máximo de la galería para que no ocupe todo el espacio */
+            margin: 0 auto;
+            /* Centrar la galería en la página */
+        }
+
+        /* Espaciado adicional entre las imágenes */
+        .gallery-item img,
+        .services img {
+            margin: 50px 0;
+            /* Agregar margen vertical entre imágenes */
+        }
+
+        /* Ajustar el espaciado y alinear el texto */
+        .gallery-description {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Espaciado en la sección de inicio */
+        .inicio .content {
+            padding: 10px;
+        }
+
+        /* Espaciado del contenido adicional */
+        .additional-info {
+            padding: 40px 20px;
+            padding: 40px;
+            background: linear-gradient(135deg,  #8f6035ff, #8f6035ff, #8f6035ff);
+            background-size: 125%;
+            animation: fanimado 12s infinite;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+        }
+
+        @keyframes fanimado {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Espaciado en las imágenes de la sección servicios */
+        .services img {
+            margin-bottom: 50px;
+            /* Separar imágenes en la sección de servicios */
+        }
+
+        /* Responsividad para pantallas pequeñas */
+        @media (max-width: 768px) {
+
+            .gallery-dulce .grid,
+            .services .grid {
+                padding: 0 4px;
+                /* Reducir padding en pantallas pequeñas */
+            }
+        }
+
+
+
+        .additional-info h2 {
+            color: #000000;
+        }
+
+        .list .list-group-item {
+            color: #f8f8f8;
+            background-color: #000000;
+        }
